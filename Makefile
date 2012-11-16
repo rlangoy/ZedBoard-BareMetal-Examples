@@ -1,5 +1,5 @@
 ARMGNU ?= arm-none-eabi
-COPS    = -Wall -O2 -nostdlib -nostartfiles -ffreestanding 
+COPS    =   
 ARCH    = -mcpu=cortex-a9 -mfpu=vfpv3 
 
 gcc : hello.bin

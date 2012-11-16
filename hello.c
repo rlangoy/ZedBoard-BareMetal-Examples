@@ -1,7 +1,7 @@
 #define UART_FIFO_OFFSET	0x30 
 #define USART_BASE        0xe0001000
 
-volatile unsigned int * const UART0DR = (unsigned int *)USART_BASE+USART_BASE;
+volatile unsigned int * const UART0DR = (unsigned int *) 0xe0001030;
 	 
 void print_uart0(const char *s) 
 {
