@@ -15,7 +15,7 @@
 
 volatile unsigned int * const TxRxFIFO0 = UART1_TxRxFIFO0;
 	 
-void print_uart0(const char *s) 
+void print_uart1(const char *s) 
 {
     while(*s != '\0') 
     {     /* Loop until end of string */
@@ -26,5 +26,5 @@ void print_uart0(const char *s)
 	 
 void c_entry() 
 {
-   print_uart0("Hello world!\n");
+   print_uart1("Hello world!\n");
 }
