@@ -26,5 +26,5 @@ void print_uart1(const char *s)
 	 
 void c_entry() 
 {
-   print_uart1("Hello world!\n");
+   print_uart1("\nHello world!\n");
 }
