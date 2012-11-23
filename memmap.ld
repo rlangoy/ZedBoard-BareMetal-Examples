@@ -1,6 +1,7 @@
 SECTIONS
 {
      . = 0x10000;
+     start = 0x10000; /* Informs .elf uploaders on  start address*/
      .ro : {
 	  startup.o (.text)
 	  *(.text)
