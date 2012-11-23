@@ -2,7 +2,7 @@ ARMGNU ?= arm-none-eabi
 COPS    =   
 ARCH    = -mcpu=cortex-a9 -mfpu=vfpv3 
 
-gcc : hello.bin
+gcc : hello01.bin
 
 all : gcc clang
 
@@ -20,11 +20,11 @@ clang: hello.bin
 startup.o : startup.s
 	$(ARMGNU)-as $(ARCH) startup.s -o startup.o
 
-hello.o : hello.c
-	$(ARMGNU)-gcc $(COPS) $(ARCH) -c hello.c -o hello.o
+hello01.o : hello01.c
+	$(ARMGNU)-gcc $(COPS) $(ARCH) -c hello01.c -o hello01.o
 
-hello.bin : memmap.ld startup.o hello.o 
-	$(ARMGNU)-ld startup.o hello.o -T memmap.ld -o hello.elf
-	$(ARMGNU)-objdump -D hello.elf > hello.list
-	$(ARMGNU)-objcopy hello.elf -O ihex hello.hex
-	$(ARMGNU)-objcopy hello.elf -O binary hello.bin
+hello01.bin : memmap.ld startup.o hello01.o 
+	$(ARMGNU)-ld startup.o hello01.o -T memmap.ld -o hello01.elf
+	$(ARMGNU)-objdump -D hello01.elf > hello01.list
+	$(ARMGNU)-objcopy hello01.elf -O ihex hello01.hex
+	$(ARMGNU)-objcopy hello01.elf -O binary hello01.bin
