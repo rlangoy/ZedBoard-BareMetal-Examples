@@ -1,8 +1,5 @@
-ZedBoardHelloBareMetal
+Hello01
 ======================
-
-This is a collection of examples of "Bare Metal" programs for the ARM
-processon on the ZedBoard.
 
 Makes a .bin file that could be uploaded using u-Boot 
         to the Zedboard and display Hello World  using the serial uart
@@ -24,12 +21,16 @@ Install the pacgages ARM - tool Chain by installing using
    gdb-arm-none-eabi
 
 
-BUILD and HOWTO
-================
+BUILD 
+======
 
-The hello.bin file is compiled using make :)
+The hello01.bin file is compiled using make :)
 
-hello.bin has its entrypoint / start address at: 0x10000
+
+UPLOAD AND RUNNING USING U-BOOT
+===============================
+
+hello01.bin has its entrypoint / start address at: 0x10000
 
  a) Connect the Zedboard UART (USB) to the Computer.
  b) use a serial terminal program to comunicate width the UART that can
@@ -39,9 +40,9 @@ http://hp.vector.co.jp/authors/VA002416/teraterm.html )
  c) power on the ZedBoard and wait for the message:
         Hit any key to stop autoboot:   
      and stop it by pressing a key :)
- d) Upload the program hello.bin  using 
+ d) Upload the program hello01.bin  using 
        loadb 0x10000
-             now you ned to send the file hello.bin  using the Kermit
+             now you ned to send the file hello01.bin  using the Kermit
 protocol
  e)  Run the program using
        go 0x10000
