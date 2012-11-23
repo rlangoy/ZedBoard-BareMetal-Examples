@@ -15,7 +15,7 @@ clean :
 	rm -f *.img
 	rm -f *.bc
 
-clang: hello.bin
+clang: hello02.bin
 
 startup.o : startup.s
 	$(ARMGNU)-as $(ARCH) startup.s -o startup.o
