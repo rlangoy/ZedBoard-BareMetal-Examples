@@ -9,8 +9,9 @@ All programs contains a README.txt for a more detailed description
 
 Programs :
 .\Hello01 ->  Makes a .bin file that could be uploaded using u-Boot 
-              to the Zedboard and display Hello World  using the serial uart
-
+              to the Zedboard and displays "Hello World" using the serial uart
+.\Hello02 ->  Same as Hello01, but uses printf to displays "Hello World"
+	      using the serial uart 
 
 BUILD REQUIREMENTS
 ==================
