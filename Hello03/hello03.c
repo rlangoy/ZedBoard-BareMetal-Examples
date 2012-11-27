@@ -28,7 +28,7 @@
 /*Register Baud_rate_divider_reg0 Details*/
 #define XUARTPS_BDIV_CD_115200       8 /*Baud Rate Clock Divisor*/
 
-
+/* Bits defined in the Register Channel_sts_reg0 */
 #define UART_STS_TXFULL 1<<4 /* Transmitter FIFO Full continuous status:
                                0: Tx FIFO is not full
                                1: Tx FIFO is full*/
