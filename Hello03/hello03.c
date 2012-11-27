@@ -29,6 +29,11 @@
 #define XUARTPS_BDIV_CD_115200       8 /*Baud Rate Clock Divisor*/
 
 
+#define UART_STS_TXFULL 1<<4 /* Transmitter FIFO Full continuous status:
+                               0: Tx FIFO is not full
+                               1: Tx FIFO is full*/
+
+
 #include <stdio.h> 
 #define u32 unsigned int
 
@@ -64,13 +69,17 @@ void init_uart1_RxTx_115200_8N1()
 {
     
 }
+
 	 
 /* <stdio.h>'s printf uses puts to send chars
    puts so that printf sends char to the serial port*/
 int puts(const char *s) 
 {
     while(*s != '\0') 
-    {     /* Loop until end of string */
+    {   
+        /*Make sure that the uart is ready for new char's before continuing*/
+         while ((( UART1->channel_sts_reg0 ) & UART_STS_TXFULL) > 0) ;
+          /* Loop until end of string */
 	 UART1->tx_rx_fifo= (unsigned int)(*s); /* Transmit char */
 	 s++; /* Next char */
     }
