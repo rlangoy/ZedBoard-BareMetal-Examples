@@ -1,7 +1,9 @@
-Hello02
+Hello03
 =========
 
-Same example as in Hello03 but........
+Same example as in Hello03 initiates the UART to use:
+  baudrate: 11,5200 8-N-1 (8-bit no-parity one-stop-bit)
+  The example show impements a hedder describing the UART registers
   
 BUILD REQUIREMENTS
 ===================
