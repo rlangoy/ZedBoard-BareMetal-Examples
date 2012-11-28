@@ -3,7 +3,9 @@ Hello03
 
 Same example as in Hello03 initiates the UART to use:
   baudrate: 11,5200 8-N-1 (8-bit no-parity one-stop-bit)
-  The example show impements a hedder describing the UART registers
+  The example show impements a structure describing the UART registers
+  and some registers bitmask.This sample dosent depent on U-Boot 
+  (to setup the baudrate etc)
   
 BUILD REQUIREMENTS
 ===================
@@ -47,7 +49,7 @@ hello01.bin has its entrypoint / start address at: 0x10000
         Hit any key to stop autoboot:   
      and stop it by pressing a key :)
 
- d) Upload the program hello01.bin  using 
+ d) Upload the program hello03.bin  using 
        loady 0x10000
              Send the file hello01.bin using the y-modem protocol
                Push ([Ctrl] + 'a') and then 'S' Select ymodem
