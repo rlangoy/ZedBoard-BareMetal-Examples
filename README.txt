@@ -12,6 +12,11 @@ Programs :
               to the Zedboard and displays "Hello World" using the serial uart
 .\Hello02 ->  Same as Hello01, but uses printf to displays "Hello World"
 	      using the serial uart 
+.\Hello03 ->  Same example as in Hello03 initiates the UART to use:
+              baudrate: 11,5200 8-N-1 (8-bit no-parity one-stop-bit)
+              The example show impements a structure describing the UART
+              and some registers bitmask.The sample dosent depent on U-Boot
+              (to setup the baudrate etc)
 
 BUILD REQUIREMENTS
 ==================
