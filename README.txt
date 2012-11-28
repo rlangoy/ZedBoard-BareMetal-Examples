@@ -17,6 +17,9 @@ Programs :
               The example show impements a structure describing the UART
               and some registers bitmask.The sample dosent depent on U-Boot
               (to setup the baudrate etc)
+.\Hello04 ->  Same example as in Hello03 but seperates the "main" program 
+              and the UART functions (located in xuartps.h)
+
 
 BUILD REQUIREMENTS
 ==================
