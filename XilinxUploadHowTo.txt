@@ -1,0 +1,43 @@
+
+How to upload and run hello01 using the Xilinx Microprocessor Debugger (XMD) 
+
+Download and install the Xilinx ISE form http://www.xilinx.com/support/download/index.htm
+
+ a) Connect the USB micro port named prog on the ZedBoard to the PC
+ b) From the terminal window start XMD by typing: 
+     xmd
+ c)  connect arm hw    <- Connects to the the ARM Cortex-A9 processor 
+ d)  dow hello01.elf   <- Download the .elf file to the ZedBoard
+ c)  con               <- Starts the procssor/program
+
+Retults: 
+    The serial port should send out "Hello World!" (not show in  the xmd console)  
+
+
+Screen dum of expected result:
+
+XMD% connect arm hw
+
+JTAG chain configuration
+--------------------------------------------------
+Device   ID Code        IR Length    Part Name
+ 1       4ba00477           4        Cortex-A9
+ 2       03727093           6        XC7Z020
+
+CortexA9 Processor Configuration
+-------------------------------------
+Version.............................0x00000003
+User ID.............................0x00000000
+No of PC Breakpoints................6
+No of Addr/Data Watchpoints.........1
+
+Connected to "arm" target. id = 64
+Starting GDB server for "arm" target (id = 64) at TCP port no 1234
+XMD% dow hello01.elf
+Downloading Program -- hello01.elf
+        section, .ro: 0x00010000-0x0001008f
+Setting PC with Program Start Address 0x00010000
+XMD% con
+Processor started. Type "stop" to stop processor
+
+RUNNING> XMD% exit
