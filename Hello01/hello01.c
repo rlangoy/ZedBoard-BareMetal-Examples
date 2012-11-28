@@ -26,6 +26,6 @@ void print_uart1(const char *s)
 	 
 void c_entry() 
 {
-   print_uart1("\nHello world!\n");
+   print_uart1("\r\nHello world!");
    while(1) ; /*dont exit the program*/
 }
