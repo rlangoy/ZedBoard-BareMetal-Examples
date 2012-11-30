@@ -26,7 +26,10 @@ Programs :
                Please read Copy right notice on in the end of this file
 .\Hello06 ->  Same exame as in Hello05 but implementing printf using NewLib 
                This allows us to properly display printf("Hello nr %.2f",3.14);
- 
+.\Hello07 ->  Same example as in Hello06 but implementing scanf to display a proper
+    	        greeting (by asking for a users name)
+
+
 
 BUILD REQUIREMENTS
 ==================
