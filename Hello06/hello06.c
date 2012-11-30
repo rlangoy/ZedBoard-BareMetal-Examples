@@ -10,7 +10,7 @@
 */
 
 #include <stdio.h> 
-#include "xuartps.h"	 
+#include "xuartps.h" /*Maps stdout to use the RS232 uart */	 
 
 void c_entry()
 {
