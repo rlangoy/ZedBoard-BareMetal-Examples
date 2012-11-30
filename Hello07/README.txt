@@ -1,8 +1,8 @@
-Hello06
+Hello07
 =========
 
-Same example as in Hello05 but implementing printf using the NewLib Library
-       This allows us to properly display printf("Hello mr %.2f",3.14);
+Same example as in Hello06 but implementing scanf to display a proper
+    greeting (by asking for a users name)
 
 NewLib
 ==================
@@ -19,9 +19,7 @@ This gives you a list like:
    ...
 And for the libgcc.a
    dpkg -L gcc-arm-none-eabi
-
-
-
+ 
 The Needed files is located in /usr/amr-none-eabi/ and
 /usr/lib/gcc/arm-none-eabi/4.6.2/
 and we need to update the Make file so that it know where to get the include
@@ -49,7 +47,7 @@ Install the pacgages ARM - tool Chain by installing using
 BUILD 
 ======
 
-The hello05 file is compiled using make :)
+The hello07 is compiled using make :)
 
 
 UPLOAD AND RUNNING USING U-BOOT

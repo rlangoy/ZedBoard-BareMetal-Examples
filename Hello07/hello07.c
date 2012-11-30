@@ -10,12 +10,17 @@
 */
 
 #include <stdio.h> 
-#include "xuartps.h" /*Maps stdout to use the RS232 uart */	 
+#include "xuartps.h" /*Maps stdin & stdout to use the RS232 uart */	 
 
 void c_entry()
 {
+  char strUserName[128];
   init_uart1_RxTx_115200_8N1();
-  printf("\nHello mr %.2f\n",3.14);
+  printf("\nHello i am ZedBoard\n");
+  printf("\nWho are you ? ");
+  scanf("%127[0-9a-zA-Z \t]s", strUserName);
+  printf("\nNice to meet you %s",strUserName);
+  
   while(1) ; /*dont exit the program*/
 }
         
