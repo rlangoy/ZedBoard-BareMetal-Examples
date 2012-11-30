@@ -9,21 +9,24 @@ All programs contains a README.txt for a more detailed description
 
 Programs :
 .\Hello01 ->  Makes a .bin file that could be uploaded using u-Boot 
-              to the Zedboard and displays "Hello World" using the serial uart
+               to the Zedboard and displays "Hello World" using the serial uart
 .\Hello02 ->  Same as Hello01, but uses printf to displays "Hello World"
-	      using the serial uart 
+	       using the serial uart 
 .\Hello03 ->  Same example as in Hello03 initiates the UART to use:
-              baudrate: 11,5200 8-N-1 (8-bit no-parity one-stop-bit)
-              The example show impements a structure describing the UART
-              and some registers bitmask.The sample dosent depent on U-Boot
-              (to setup the baudrate etc)
+               baudrate: 11,5200 8-N-1 (8-bit no-parity one-stop-bit)
+               The example show impements a structure describing the UART
+               and some registers bitmask.The sample dosent depent on U-Boot
+               (to setup the baudrate etc)
 .\Hello04 ->  Same example as in Hello03 but seperates the "main" program 
-              and the UART functions (located in xuartps.h)
+               and the UART functions (located in xuartps.h)
 .\Hello05 ->  Same example as in Hello04 but implements printf support for
 	       %d,%u,%c,%s,%x%,X
   	       Using the printf libaray Copyright (C) 2004,2008 by  Kustaa Nyholm 
 	       More info on: http://www.sparetimelabs.com/printfrevisited/index.html  
                Please read Copy right notice on in the end of this file
+.\Hello06 ->  Same exame as in Hello05 but implementing printf using NewLib 
+               This allows us to properly display printf("Hello nr %.2f",3.14);
+ 
 
 BUILD REQUIREMENTS
 ==================
