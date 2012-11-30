@@ -26,14 +26,11 @@ startup.o : startup.s
 xuartps.o : xuartps.c
 	$(ARMGNU)-gcc $(COPS) $(ARCH) -c xuartps.c -o xuartps.o
 
-syscalls.o: syscalls.c
-	$(ARMGNU)-gcc $(COPS) $(ARCH) -c syscalls.c -o syscalls.o
-
 hello06.o : hello06.c
 	$(ARMGNU)-gcc $(COPS) $(ARCH) -static  $(CDIR)/lib/libc.a -c hello06.c  -o hello06.o
 
-hello06.bin : memmap.ld startup.o hello06.o 
-	$(ARMGNU)-ld startup.o hello06.o -T memmap.ld  -o hello06.elf $(LIB) -lc -lgcc -lg -lm
+hello06.bin : memmap.ld startup.o xuartps.o hello06.o 
+	$(ARMGNU)-ld startup.o xuartps.o hello06.o -T memmap.ld  -o hello06.elf $(LIB) -lc -lgcc -lg -lm
 	$(ARMGNU)-objdump -D hello06.elf > hello06.list
 	$(ARMGNU)-objcopy hello06.elf -O ihex hello05.hex
 	$(ARMGNU)-objcopy hello06.elf -O binary hello06.bin
