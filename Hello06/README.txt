@@ -2,7 +2,7 @@ Hello06
 =========
 
 Same example as i  Hello04 but implementing printf using the NewLib Library
-       This allows us to properly display printf("Hello nr %.2f",3.14);
+       This allows us to properly display printf("Hello mr %.2f",3.14);
 
 NewLib
 ==================
