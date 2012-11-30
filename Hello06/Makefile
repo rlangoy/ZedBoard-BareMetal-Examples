@@ -27,7 +27,7 @@ xuartps.o : xuartps.c
 	$(ARMGNU)-gcc $(COPS) $(ARCH) -c xuartps.c -o xuartps.o
 
 hello06.o : hello06.c
-	$(ARMGNU)-gcc $(COPS) $(ARCH) -static  $(CDIR)/lib/libc.a -c hello06.c  -o hello06.o
+	$(ARMGNU)-gcc $(COPS) $(ARCH) -c hello06.c  -o hello06.o
 
 hello06.bin : memmap.ld startup.o xuartps.o hello06.o 
 	$(ARMGNU)-ld startup.o xuartps.o hello06.o -T memmap.ld  -o hello06.elf $(LIB) -lc -lgcc -lg -lm
