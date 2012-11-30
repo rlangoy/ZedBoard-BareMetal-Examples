@@ -52,15 +52,15 @@ void sendUART1char(char s)
    puts so that printf sends strings to the serial port*/
 int puts(const char *s) 
 {
-    while(*s != '\0') 
-    { 
-	  if(*s=='\n')
-		  sendUART1char('\r');
+  while(*s != '\0') 
+  { 
+	if(*s=='\n')
+	  sendUART1char('\r');
 	   
-	   sendUART1char(*s); //Send char to the UART1	   
-	   s++; // Next char 
-    }
-    return 0;
+	sendUART1char(*s); //Send char to the UART1	   
+	s++; // Next char 
+  }
+  return 0;
 }
 
 /*  <stdio.h>'s printf("%d",1) uses NewLib's _write to send chars
