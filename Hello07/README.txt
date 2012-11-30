@@ -1,14 +1,15 @@
-Hello06
+Hello07
 =========
 
-Same example as i  Hello04 but implementing printf using the NewLib Library
-       This allows us to properly display printf("Hello mr %.2f",3.14);
+Same example as in Hello06 but implementing scanf to display a proper
+    greeting (by asking for a users name)
 
 NewLib
 ==================
 
 We need to link width the option -lc and -gcc to use libc.a and libgcc.a
 
+For libc.a
 To figure out where the sudo apt-get instll newlib-arm-eabi installed it's
 files we need to enter the folowing in an terminal window:
     dpkg -L newlib-arm-none-eabi
@@ -16,7 +17,9 @@ This gives you a list like:
    /usr/arm-none-eabi/include/utmp.h
    /usr/arm-none-eabi/include/string.h
    ...
-
+And for the libgcc.a
+   dpkg -L gcc-arm-none-eabi
+ 
 The Needed files is located in /usr/amr-none-eabi/ and
 /usr/lib/gcc/arm-none-eabi/4.6.2/
 and we need to update the Make file so that it know where to get the include
@@ -44,7 +47,7 @@ Install the pacgages ARM - tool Chain by installing using
 BUILD 
 ======
 
-The hello05.bin file is compiled using make :)
+The hello07 is compiled using make :)
 
 
 UPLOAD AND RUNNING USING U-BOOT
