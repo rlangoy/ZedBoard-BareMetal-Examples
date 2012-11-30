@@ -47,21 +47,6 @@ void sendUART1char(char s)
   /* Loop until end of string */
   UART1->tx_rx_fifo= (unsigned int) s; /* Transmit char */
 }
-	 
-/* <stdio.h>'s printf("ABC") uses puts to send chars
-   puts so that printf sends strings to the serial port*/
-int puts(const char *s) 
-{
-  while(*s != '\0') 
-  { 
-	if(*s=='\n')
-	  sendUART1char('\r');
-	   
-	sendUART1char(*s); //Send char to the UART1	   
-	s++; // Next char 
-  }
-  return 0;
-}
 
 /*  <stdio.h>'s printf("%d",1) uses NewLib's _write to send chars
  *  putc sends char to the serial port  */
@@ -72,6 +57,31 @@ void putc(char ch)
    sendUART1char(ch); //Send char to the UART1	     
 }
 
+	 
+/* <stdio.h>'s printf("ABC") uses puts to send chars
+   puts so that printf sends strings to the serial port*/
+int puts(const char *s) 
+{
+  while(*s != '\0') 
+  { 
+    putc(*s); //Write the char to the UART 
+    s++; // Next char 
+  }
+  return 0;
+}
+
+
+char getc(void)
+{ 
+  /*Wait for new char before continuing*/
+  while ((( UART1->channel_sts_reg0 ) & UART_STS_RXEMPTY) > 0) ;
+ 
+  char ch= UART1->tx_rx_fifo;
+  
+  putc(ch);   /*Echo the result to the user */
+ 
+  return (char) ch;
+}
 ///////////////////////////////////////////////////////////////
 //	LOW LEVEL STUBS used by libc.a & libgcc.a                //
 //  for linking "-lc -lgcc"   				                 //
@@ -97,12 +107,11 @@ int _write (int   file, char *buf, int   nbytes)
   return nbytes; 
 }  
  
- /* used by scanf, to write chars */
+ /* used by scanf, to read chars */
 int _read (int   file, char *buf, int   nbytes)
 { 
-  /*Need to implement UART Read char function */
- 
-  return 0;
+  *buf=getc(); /*Red one char form the UART */ 
+  return 1;    /*Return that one char was read*/
 }
 
 int _fstat (int file, struct stat *st)
@@ -120,8 +129,8 @@ int _lseek (int   file, int   offset, int   whence) { return  0; }
 void * _sbrk (int nbytes)
 {
 		
-  extern char heap_low[];	   // Defined by the linker.  
-  extern char heap_start[];  // Defined by the linker.  
+  extern char heap_low[];      // Defined by the linker.  
+  extern char heap_start[];    // Defined by the linker.  
  
   /* The statically held previous end of the heap, with its initialization. */
   static void *heap_ptr = (void *)heap_low;    /* Previous end */

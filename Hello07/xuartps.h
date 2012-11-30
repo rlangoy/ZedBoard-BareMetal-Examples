@@ -57,9 +57,12 @@ static struct XUARTPS *UART1=(struct XUARTPS*) UART1_BASE;
 #define XUARTPS_BDIV_CD_115200       6  /*Baud Rate Clock Divisor*/
 
 /* Bits defined in the Register Channel_sts_reg0 */
-#define UART_STS_TXFULL 1<<4 /* Transmitter FIFO Full continuous status:
-                               0: Tx FIFO is not full
-                               1: Tx FIFO is full*/
+#define UART_STS_TXFULL 1<<4    /* Transmitter FIFO Full continuous status:
+                                 0: Tx FIFO is not full
+                                 1: Tx FIFO is full*/
+#define UART_STS_RXEMPTY 1<<1	/*Receiver FIFO Full continuous status:
+								  0: Rx FIFO is not empty
+								  1: Rx FIFO is empty*/
 
 /*Register Control_reg0 BitMask */
 #define XUARTPS_CR_STOPBRK (1<<8)  /* Stop transmitter break */
@@ -93,9 +96,4 @@ static struct XUARTPS *UART1=(struct XUARTPS*) UART1_BASE;
 */
 void init_uart1_RxTx_115200_8N1();
 void sendUART1char(char s);
-int puts(const char *s);
-
-
-
-
- 
+int  puts(const char *s);
