@@ -10,7 +10,7 @@
 */
 /*  NewLib How to use:
  *  https://docs.blackfin.uclinux.org/doku.php?id=toolchain:bare_metal:newlib
- *
+ *  remeber link with the options -lc and -lgcc
  */
 
 #include <errno.h>
@@ -48,8 +48,8 @@ void sendUART1char(char s)
   UART1->tx_rx_fifo= (unsigned int) s; /* Transmit char */
 }
 	 
-/* <stdio.h>'s printf uses puts to send chars
-   puts so that printf sends char to the serial port*/
+/* <stdio.h>'s printf("ABC") uses puts to send chars
+   puts so that printf sends strings to the serial port*/
 int puts(const char *s) 
 {
     while(*s != '\0') 
@@ -63,133 +63,78 @@ int puts(const char *s)
     return 0;
 }
 
+/*  <stdio.h>'s printf("%d",1) uses NewLib's _write to send chars
+ *  putc sends char to the serial port  */
 void putc(char ch)
 {
-	  if(ch=='\n')
-		  sendUART1char('\r');
-	   
-	   sendUART1char(ch); //Send char to the UART1	     
+  if(ch=='\n')
+	  sendUART1char('\r');
+   sendUART1char(ch); //Send char to the UART1	     
 }
 
 ///////////////////////////////////////////////////////////////
-//	LOW LEVEL STUBS                                          //
+//	LOW LEVEL STUBS used by libc.a & libgcc.a                //
+//  for linking "-lc -lgcc"   				                 //
 ///////////////////////////////////////////////////////////////
 
-
-int
-_isatty (int fd)
-{
-  return 1;
-}
-
-int
-_kill (int n, int m)
-{
-    return(0);
-}
-
-void _exit(int status) 
-{
-    while(1)  {/* Loop until reset*/ }
-}
-
-    
-int
-_getpid (int n)
-{
-  return 1;
-}
-        
-
+int _isatty (int fd) 		{ return 1;  }
+int _kill (int n, int m) 	{ return(0); }
+void _exit(int status)  	{ while(1);  }  /* Loop until reset*/ 
+int _getpid (int n) 		{ return 1;  }
  
-int
-_open (const char *name,
-       int         flags,
-       int         mode)
-{
-  //errno = ENOSYS;
-  return -1;                    /* Always fails */
- 
-}       /* _open () */
- 
-int
-_close (int   file)
-{
-  //errno = EBADF;
-  return -1;                    /* Always fails */
- 
-}       /* _close () */
- 
-int
-_write (int   file,
-        char *buf,
-        int   nbytes)
+int _open (const char *name, int flags, int mode) { return -1; }
+int _close (int   file) 	{ return -1; } 
+
+/* used by printf, to write chars */
+int _write (int   file, char *buf, int   nbytes)
 {
   int i;
  
   /* Output character at at time */
   for (i = 0; i < nbytes; i++)
-    {
-	  //UART_putc( *buf++ );
-    }
+	  putc(*buf++);
+  
+  return nbytes; 
+}  
  
-  //UART_waitForTransferCompletion();
+ /* used by scanf, to write chars */
+int _read (int   file, char *buf, int   nbytes)
+{ 
+  /*Need to implement UART Read char function */
  
-  return nbytes;
- 
-}       /* _write () */
- 
-int
-_read (int   file,
-	   char *buf,
-	   int   nbytes)
-{
- 
-  int result = 0;//UART_gets( (char *) buf, nbytes );
- 
-  return result;                          /* EOF */
- 
-}       /* _read () */
- 
-int
-_fstat (int          file,
-        struct stat *st)
+  return 0;
+}
+
+int _fstat (int file, struct stat *st)
 {
   st->st_mode = S_IFCHR;
-  return  0;
+  return  0; 
+}    
  
-}       /* _fstat () */
- 
-int
-_lseek (int   file,
-        int   offset,
-        int   whence)
+int _lseek (int   file, int   offset, int   whence) { return  0; }    
+
+/* 
+ * Stub for allocating memory 
+ * Code from: http://www.embecosm.com/appnotes/ean9/html/ch05s03s15.html
+ */ 
+void * _sbrk (int nbytes)
 {
-  return  0;
+		
+  extern char heap_low[];	   // Defined by the linker.  
+  extern char heap_start[];  // Defined by the linker.  
  
-}       /* _lseek () */
- 
-void *
-_sbrk (int nbytes)
-{
-/*	  extern char heap_low[];		// Defined by the linker.  
-	  extern char heap_start[];		// Defined by the linker.  
- 
-	  static char *heap_end;
-	  char *prev_heap_end;
- 
-	  if (heap_end == NULL)
-	    heap_end = &heap_start;
- 
-	  prev_heap_end = heap_end;
- 	    {
-	      errno = ENOMEM;
-	      return (void *) -1;
-	    }
- 
-	  heap_end += nbytes;
- 
-	  return prev_heap_end;
- */
- return 0;
-} // _sbrk () //
+  /* The statically held previous end of the heap, with its initialization. */
+  static void *heap_ptr = (void *)heap_low;    /* Previous end */
+
+   if ( (heap_ptr + nbytes) <= heap_low )
+    {
+      void *base  = heap_ptr;
+      heap_ptr   += nbytes;
+                
+      return  base;
+    }
+       
+ errno = ENOMEM;
+ return (void*) -1; 
+} 
+
