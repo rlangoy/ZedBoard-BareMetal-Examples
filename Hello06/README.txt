@@ -1,7 +1,7 @@
 Hello06
 =========
 
-Same example as i  Hello04 but implementing printf using the NewLib Library
+Same example as in Hello05 but implementing printf using the NewLib Library
        This allows us to properly display printf("Hello mr %.2f",3.14);
 
 NewLib
@@ -9,6 +9,7 @@ NewLib
 
 We need to link width the option -lc and -gcc to use libc.a and libgcc.a
 
+For libc.a
 To figure out where the sudo apt-get instll newlib-arm-eabi installed it's
 files we need to enter the folowing in an terminal window:
     dpkg -L newlib-arm-none-eabi
@@ -16,6 +17,10 @@ This gives you a list like:
    /usr/arm-none-eabi/include/utmp.h
    /usr/arm-none-eabi/include/string.h
    ...
+And for the libgcc.a
+   dpkg -L gcc-arm-none-eabi
+
+
 
 The Needed files is located in /usr/amr-none-eabi/ and
 /usr/lib/gcc/arm-none-eabi/4.6.2/
@@ -44,7 +49,7 @@ Install the pacgages ARM - tool Chain by installing using
 BUILD 
 ======
 
-The hello05.bin file is compiled using make :)
+The hello05 file is compiled using make :)
 
 
 UPLOAD AND RUNNING USING U-BOOT
