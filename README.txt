@@ -72,7 +72,7 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
-LICENSE for allfiles except printf.c and printf.h
+LICENSE for all files excluding printf.c and printf.h
 =================================================
 
 Copyright (C) 2012  Rune Langoy
