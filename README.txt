@@ -1,11 +1,8 @@
-ZedBoardHelloBareMetal
-======================
+ZedBoard Hello BareMetal
+========================
 
 This is a collection of examples of "Bare Metal" programs for the ARM
 processon on the ZedBoard.
-
-
-All programs contains a README.txt for a more detailed description
 
 Programs :
 .\Hello01 ->  Makes a .bin file that could be uploaded using u-Boot 
@@ -29,6 +26,7 @@ Programs :
 .\Hello07 ->  Same example as in Hello06 but implementing scanf to display a proper
     	        greeting (by asking for a users name)
 
+All programs contains a README.txt for a more detailed description
 
 
 BUILD REQUIREMENTS
