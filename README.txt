@@ -1,11 +1,8 @@
-ZedBoardHelloBareMetal
-======================
+ZedBoard Hello BareMetal
+========================
 
 This is a collection of examples of "Bare Metal" programs for the ARM
 processon on the ZedBoard.
-
-
-All programs contains a README.txt for a more detailed description
 
 Programs :
 .\Hello01 ->  Makes a .bin file that could be uploaded using u-Boot 
@@ -22,13 +19,14 @@ Programs :
 .\Hello05 ->  Same example as in Hello04 but implements printf support for
 	       %d,%u,%c,%s,%x%,X
   	       Using the printf libaray Copyright (C) 2004,2008 by  Kustaa Nyholm 
-	       More info on: http://www.sparetimelabs.com/printfrevisited/index.html  
+	         http://www.sparetimelabs.com/printfrevisited/index.html  
                Please read Copy right notice on in the end of this file
 .\Hello06 ->  Same exame as in Hello05 but implementing printf using NewLib 
                This allows us to properly display printf("Hello nr %.2f",3.14);
 .\Hello07 ->  Same example as in Hello06 but implementing scanf to display a proper
     	        greeting (by asking for a users name)
 
+All programs contains a README.txt for a more detailed description
 
 
 BUILD REQUIREMENTS
@@ -72,3 +70,27 @@ Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+
+LICENSE for all files excluding printf.c and printf.h
+=================================================
+
+Copyright (C) 2012  Rune Langoy
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to
+deal in the Software without restriction, including without limitation the
+rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+sell copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE.
