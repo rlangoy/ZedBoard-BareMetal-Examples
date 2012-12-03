@@ -50,11 +50,13 @@ void sendUART1char(char s)
 
 /*  <stdio.h>'s printf("%d",1) uses NewLib's _write to send chars
  *  putc sends char to the serial port  */
-void putc(char ch)
+int putchar(int ch)
 {
   if(ch=='\n')
 	  sendUART1char('\r');
-   sendUART1char(ch); //Send char to the UART1	     
+   sendUART1char((char)ch); //Send char to the UART1	     
+   
+   return 0;
 }
 
 	 
@@ -64,7 +66,7 @@ int puts(const char *s)
 {
   while(*s != '\0') 
   { 
-    putc(*s); //Write the char to the UART 
+    putchar((char) *s); //Write the char to the UART 
     s++; // Next char 
   }
   return 0;
@@ -78,7 +80,7 @@ char getc(void)
  
   char ch= UART1->tx_rx_fifo;
   
-  putc(ch);   /*Echo the result to the user */
+  putchar(ch);   /*Echo the result to the user */
  
   return (char) ch;
 }
@@ -102,7 +104,7 @@ int _write (int   file, char *buf, int   nbytes)
  
   /* Output character at at time */
   for (i = 0; i < nbytes; i++)
-	  putc(*buf++);
+	  putchar((char)*buf++);
   
   return nbytes; 
 }  
@@ -126,16 +128,17 @@ int _lseek (int   file, int   offset, int   whence) { return  0; }
  * Stub for allocating memory 
  * Code from: http://www.embecosm.com/appnotes/ean9/html/ch05s03s15.html
  */ 
-void * _sbrk (int nbytes)
+caddr_t * _sbrk (int nbytes)
 {
 		
-  extern char heap_low[];      // Defined by the linker.  
-  extern char heap_start[];    // Defined by the linker.  
+  extern char heap_low[];      /* Defined by the linker. */
+ /* extern char heap_start[];    // Defined by the linker.  
+ */
  
   /* The statically held previous end of the heap, with its initialization. */
   static void *heap_ptr = (void *)heap_low;    /* Previous end */
 
-   if ( (heap_ptr + nbytes) <= heap_low )
+   if ( ((char*)(heap_ptr + nbytes)) <= heap_low )
     {
       void *base  = heap_ptr;
       heap_ptr   += nbytes;
