@@ -41,3 +41,5 @@ $(MFILE).bin : $(STARTUP)memmap.ld startup.o xuartps.o $(MFILE).o
 	$(ARMGNU)-objdump -D $(MFILE).elf > $(MFILE).list
 	$(ARMGNU)-objcopy $(MFILE).elf -O ihex $(MFILE).hex
 	$(ARMGNU)-objcopy $(MFILE).elf -O binary  $(MFILE).bin
+exec:
+	xmd -tcl "../scrips/xmd_exec.tcl $(MFILE).elf"
