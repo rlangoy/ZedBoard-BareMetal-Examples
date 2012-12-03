@@ -26,10 +26,13 @@ Programs :
 .\Hello07 ->  Same example as in Hello06 but implementing scanf to display a proper
     	       greeting (by asking for a users name)
 .\Hell008 ->  Same example as in Hello07 but aragned so that it is a beter 
-               startingpoint for new projects
+               startingpoint for new projects. Added "make exec" for uploading
+               hello08.elf and running it using xmd
+
 
 .\drivers ->  Driver for serial-port
-.\arc     ->  Startup scripts
+.\arch    ->  Startup scripts
+.\scripts ->  xmd scripts
 
 
 All programs contains a README.txt for a more detailed description

@@ -2,13 +2,15 @@ Hello08
 =========
 
 Same example as in Hello07 but aragned so that it is a beter startingpoint 
-for new projects 
+for new projects added "make exec" for uploading hello08.elf and running it
+using xmd
+
 
 Rearanged the the files into new diectories:                      
 
    DRIVERS =../drivers/   <- Drivers
    STARTUP =../arch/      <- Startup scripts 
-
+   SCRIPTS =../scripts/   <- xmd scripts
 
 NewLib
 ==================
