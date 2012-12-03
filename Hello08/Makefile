@@ -27,7 +27,7 @@ clean :
 
 clang: $(MFILE).bin
 
-startup.o : startup.s
+startup.o : $(STARTUP)startup.s
 	$(ARMGNU)-as $(ARCH) $(STARTUP)startup.s -o startup.o
 
 xuartps.o : $(DRIVERS)xuartps.c
@@ -36,7 +36,7 @@ xuartps.o : $(DRIVERS)xuartps.c
 $(MFILE).o : $(MFILE).c
 	$(ARMGNU)-gcc $(COPS) $(ARCH) -I $(DRIVERS) -c $(MFILE).c  -o $(MFILE).o
 
-$(MFILE).bin : memmap.ld startup.o xuartps.o $(MFILE).o 
+$(MFILE).bin : $(STARTUP)memmap.ld startup.o xuartps.o $(MFILE).o 
 	$(ARMGNU)-ld startup.o xuartps.o $(MFILE).o -T $(STARTUP)memmap.ld  -o $(MFILE).elf $(LIB) -lc -lgcc -lg -lm
 	$(ARMGNU)-objdump -D $(MFILE).elf > $(MFILE).list
 	$(ARMGNU)-objcopy $(MFILE).elf -O ihex $(MFILE).hex
