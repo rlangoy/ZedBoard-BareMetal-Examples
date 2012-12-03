@@ -24,7 +24,13 @@ Programs :
 .\Hello06 ->  Same exame as in Hello05 but implementing printf using NewLib 
                This allows us to properly display printf("Hello nr %.2f",3.14);
 .\Hello07 ->  Same example as in Hello06 but implementing scanf to display a proper
-    	        greeting (by asking for a users name)
+    	       greeting (by asking for a users name)
+.\Hell008 ->  Same example as in Hello07 but aragned so that it is a beter 
+               startingpoint for new projects
+
+.\drivers ->  Driver for serial-port
+.\arc     ->  Startup scripts
+
 
 All programs contains a README.txt for a more detailed description
 
@@ -73,7 +79,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 
 LICENSE for all files excluding printf.c and printf.h
-=================================================
+=====================================================
 
 Copyright (C) 2012  Rune Langoy
 
