@@ -1,4 +1,4 @@
-ARMGNU ?= arm-none-eabi
+ARMGNU ?= arm-linux-gnueabihf
 COPS    =   
 ARCH    = -mcpu=cortex-a9 -mfpu=vfpv3 
 

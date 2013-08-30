@@ -1,4 +1,4 @@
-ARMGNU ?= arm-none-eabi
+ARMGNU ?= arm-linux-gnueabihf
 COPS    = -Wall -nodefaultlibs -I /usr/arm-none-eabi/include
 ARCH    = -mcpu=cortex-a9 -mfpu=vfpv3 -I /usr/arm-none-eabi/include 
 CDIR    = /usr/arm-none-eabi
