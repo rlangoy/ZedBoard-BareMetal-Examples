@@ -1,9 +1,9 @@
 ARMGNU ?= arm-linux-gnueabihf
-COPS    = -Wall -nodefaultlibs -I /usr/arm-none-eabi/include
-ARCH    = -mcpu=cortex-a9 -mfpu=vfpv3 -I /usr/arm-none-eabi/include 
+COPS    = -Wall -nodefaultlibs -I /usr/arm-linux-gnueabi/lib/include
+ARCH    = -mcpu=cortex-a9 -mfpu=vfpv3 -I /usr/arm-linux-gnueabi/include 
 CDIR    = /usr/arm-none-eabi
 
-LIB = -L /usr/arm-none-eabi/lib/ -L /usr/lib/gcc/arm-none-eabi/4.6.2/
+LIB = -L /usr/arm-linux-gnueabi/lib/ -L /usr/lib/gcc-cross/arm-linux-gnueabihf/4.7/
 
 gcc : hello06.bin
 

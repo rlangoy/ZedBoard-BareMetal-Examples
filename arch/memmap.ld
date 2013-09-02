@@ -12,6 +12,7 @@ SECTIONS
 	  *(.data)
 	  *(.bss)	  *(COMMON)
 	 }
+     .rel.plt        : { *(.rel.plt) }
      . = ALIGN(8);
 	 
      heap_low = .; /* for _sbrk */

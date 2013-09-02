@@ -21,7 +21,7 @@ extern int errno;
 #include "xuartps.h"
 
 #ifndef caddr_t
-  #define caddr_t char*
+  #define caddr_t void*
 #endif
 
 

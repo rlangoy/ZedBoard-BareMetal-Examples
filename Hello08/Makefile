@@ -3,14 +3,14 @@
 MFILE =hello08
 
 ARMGNU ?= arm-linux-gnueabihf
-COPS    = -Wall -nodefaultlibs -I /usr/arm-none-eabi/include
-ARCH    = -mcpu=cortex-a9 -mfpu=vfpv3 -I /usr/arm-none-eabi/include 
-CDIR    = /usr/arm-none-eabi
+COPS    = -Wall -nodefaultlibs -I /usr/arm-linux-gnueabi/include
+ARCH    = -mcpu=cortex-a9 -mfpu=vfpv3 -I /usr/arm-linux-gnueabi/include 
+CDIR    = /arm-linux-gnueabi
 
 DRIVERS =../drivers/
 STARTUP =../arch/
 
-LIB = -L /usr/arm-none-eabi/lib/ -L /usr/lib/gcc/arm-none-eabi/4.6.2/
+LIB = -L /usr/arm-linux-gnueabi/lib/ -L /usr/lib/gcc-cross/arm-linux-gnueabihf/4.7/
 
 gcc : $(MFILE).bin
 

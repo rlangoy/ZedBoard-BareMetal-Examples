@@ -16,8 +16,8 @@ void c_entry()
 {
   char strUserName[128];
   init_uart1_RxTx_115200_8N1();
-  printf("\nHello i am ZedBoard\n");
-  printf("\nWho are you ? ");
+  printf("Hello i am ZedBoard");
+  printf("Who are you ? ");
   scanf("%127[0-9a-zA-Z \t]s", strUserName);
   printf("\nNice to meet you %s",strUserName);
   
