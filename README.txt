@@ -21,14 +21,6 @@ Programs :
   	       Using the printf libaray Copyright (C) 2004,2008 by  Kustaa Nyholm 
 	         http://www.sparetimelabs.com/printfrevisited/index.html  
                Please read Copy right notice on in the end of this file
-.\Hello06 ->  Same exame as in Hello05 but implementing printf using NewLib 
-               This allows us to properly display printf("Hello nr %.2f",3.14);
-.\Hello07 ->  Same example as in Hello06 but implementing scanf to display a proper
-    	       greeting (by asking for a users name)
-.\Hell008 ->  Same example as in Hello07 but aragned so that it is a beter 
-               startingpoint for new projects. Added "make exec" for uploading
-               hello08.elf and running it using xmd
-
 
 .\drivers ->  Driver for serial-port
 .\arch    ->  Startup scripts
