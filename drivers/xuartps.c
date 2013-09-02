@@ -15,9 +15,15 @@
 
 #include <errno.h>
 #include <sys/stat.h>
+#include <sys/mman.h>
 extern int errno;
 
 #include "xuartps.h"
+
+#ifndef caddr_t
+  #define caddr_t char*
+#endif
+
 
 /*
 * Initiate UART1  ( /dev/ttyACM0 on host computer )
