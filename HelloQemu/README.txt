@@ -18,9 +18,6 @@ Install ARM Cross-Compiler:
    Install the ARM Cross-Compiler using 
       sudo apt-get install gcc-arm-linux-gnueabihf
 
-Install gdb for multi architecture
-    sudo apt install gdb-multiarch
-
 Install qemu using:
     sudo apt-get install quemu qemu-utils qemu-system-arm
 
@@ -32,6 +29,26 @@ The helloq.bin file is compiled using make :)
 
 UPLOAD AND RUNNING USING QEMU
 ===============================
+
+Start xuilinx-zynq qemu emulation by uploading helloq.bin to 0x1000 and run it.
+     qemu-system-arm -machine xilinx-zynq-a9 -kernel ./helloq.bin -nographic
+
+Kill emulation by:
+     
+     Ctrl-A X
+
+     1) First press [Ctrl] and [a] 
+     2) Release the keys
+     3) Press [x]
+
+
+UPLOAD AND RUNNING USING QEMU & GDB
+====================================
+
+Install gdb for multi architecture
+    sudo apt install gdb-multiarch
+
+
 
 Start xuilinx-zynq qemu emulation :
     qemu-system-arm -machine xilinx-zynq-a9 -s -S
