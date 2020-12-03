@@ -34,14 +34,14 @@ UPLOAD AND RUNNING USING QEMU
 ===============================
 
 Start xuilinx-zynq qemu emulation :
-     qemu-system-arm -machine xilinx-zynq-a9 -s -S
+    qemu-system-arm -machine xilinx-zynq-a9 -s -S
 
 
 Start gdb in the current diectory
-     gdb-multiarch -d $PWD
+    gdb-multiarch -d $PWD
 
 Run the commands:
-     target remote 127.0.0.1:1234
+    target remote 127.0.0.1:1234
     load helloq.elf
     c
 
