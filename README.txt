@@ -22,6 +22,10 @@ Programs :
 	         http://www.sparetimelabs.com/printfrevisited/index.html  
                Please read Copy right notice on in the end of this file
 
+.\HelloQemu -> Simple example and doc for simulation using QEMU
+               The sample uses UART0
+
+
 .\drivers ->  Driver for serial-port
 .\arch    ->  Startup scripts
 .\scripts ->  xmd scripts
@@ -74,7 +78,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 LICENSE for all files excluding printf.c and printf.h
 =====================================================
 
-Copyright (C) 2012  Rune Langoy
+Copyright (C) 2012-2020  Rune Langoy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to
